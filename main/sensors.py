@@ -10,7 +10,7 @@ NUM_STATIONS = 2
 DELAY_TIME = 2
 device_id = "pydevhw1"
 hubTopicPublish = "devices/"+device_id+"/messages/events/"
-iotHubName = "iot-miniproject.azure-devices.net"
+iotHubName = "homework1.azure-devices.net"
 hubTopicSubscribe = "devices/"+device_id+"/messages/devicebound/#"
 sharedAccessKey = "thY2WjezpAzWlW4FfxEzvYfCmXOtJzkwyQ3eTpdB+K4="
 
