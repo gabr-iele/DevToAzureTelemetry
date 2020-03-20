@@ -5,6 +5,7 @@ import time
 import base64
 import hmac
 import urllib.parse
+import json
 
 NUM_STATIONS = 2
 DELAY_TIME = 2
@@ -12,7 +13,7 @@ device_id = "pydevhw1"
 hubTopicPublish = "devices/"+device_id+"/messages/events/"
 iotHubName = "homework1.azure-devices.net"
 hubTopicSubscribe = "devices/"+device_id+"/messages/devicebound/#"
-sharedAccessKey = "thY2WjezpAzWlW4FfxEzvYfCmXOtJzkwyQ3eTpdB+K4="
+sharedAccessKey = "NvjCojwDSfRfq7Jqnx498kQUwTtti/7ioF2NdMCb594="
 
 MIN_TEMP=-50
 MAX_TEMP=50
@@ -24,6 +25,7 @@ MIN_WIND_INT=0
 MAX_WIND_INT=100
 MIN_RAIN=0
 MAX_RAIN=50
+
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code: %s" % rc)
@@ -50,18 +52,19 @@ def start_stations():
                 wind_dir = random.random()*(MAX_WIND_DIR-MIN_WIND_DIR)+MIN_WIND_DIR
                 wind_int = random.random()*(MAX_WIND_INT-MIN_WIND_INT)+MIN_WIND_INT
                 rain = random.random()*(MAX_RAIN-MIN_RAIN)+MIN_RAIN
-                S = str(i+1)
+                S = "S"+str(i+1)
                 
-                client.publish(hubTopicPublish, "{temp: "+str(temp)+", env_station: S"+S+"}")
-                print("Sent Temperature parameter from station S"+S)
-                client.publish(hubTopicPublish, "{hum: "+str(hum)+", env_station: S"+S+"}")
-                print("Sent Humidity parameter from station S"+S)
-                client.publish(hubTopicPublish, "{wind_dir: "+str(wind_dir)+", env_station: S"+S+"}")
-                print("Sent Wind Direction parameter from station S"+S)
-                client.publish(hubTopicPublish, "{wind_int: "+str(wind_int)+", env_station: S"+S+"}")
-                print("Sent Wind Intensity parameter from station S"+S)
-                client.publish(hubTopicPublish, "{rain: "+str(rain)+", env_station: S"+S+"}")
-                print("Sent Rain Height parameter from station S"+S)
+
+                client.publish(hubTopicPublish, json.dumps({'parameter': 'temperature', 'env_station': S, 'value': str(temp)}))
+                print("Sent Temperature parameter from station "+S)
+                client.publish(hubTopicPublish, json.dumps({'parameter': 'humidity', 'env_station': S, 'value': str(hum)}))
+                print("Sent Humidity parameter from station "+S)
+                client.publish(hubTopicPublish, json.dumps({'parameter': 'windDirection', 'env_station': S, 'value': str(wind_dir)}))
+                print("Sent Wind Direction parameter from station "+S)
+                client.publish(hubTopicPublish, json.dumps({'parameter': 'windIntensity', 'env_station': S, 'value': str(wind_int)}))
+                print("Sent Wind Intensity parameter from station "+S)
+                client.publish(hubTopicPublish, json.dumps({'parameter': 'rainHeight', 'env_station': S, 'value': str(rain)}))
+                print("Sent Rain Height parameter from station "+S)
             time.sleep(DELAY_TIME)
         except KeyboardInterrupt:
             print("MQTT client stopped")
