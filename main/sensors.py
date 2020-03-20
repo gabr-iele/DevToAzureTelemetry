@@ -1,4 +1,3 @@
-import multiprocessing as mp
 import paho.mqtt.client as mqtt
 import random
 import time
