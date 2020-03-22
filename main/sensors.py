@@ -12,7 +12,7 @@ device_id = "pydevhw1"
 hubTopicPublish = "devices/"+device_id+"/messages/events/"
 iotHubName = "homework1.azure-devices.net"
 hubTopicSubscribe = "devices/"+device_id+"/messages/devicebound/#"
-sharedAccessKey = "NvjCojwDSfRfq7Jqnx498kQUwTtti/7ioF2NdMCb594="
+hubSharedAccessKey = --HUB_SHARED_ACCESS_KEY--
 
 MIN_TEMP=-50
 MAX_TEMP=50
@@ -85,7 +85,7 @@ client.on_connect = on_connect
 client.on_disconnect = on_disconnect
 client.on_message = on_message
 #client.on_publish = on_publish
-client.username_pw_set(iotHubName+"/"+device_id, gen_sas_token(iotHubName+"/devices/"+device_id, sharedAccessKey))
+client.username_pw_set(iotHubName+"/"+device_id, gen_sas_token(iotHubName+"/devices/"+device_id, hubSharedAccessKey))
 client.tls_set("baltimorebase64.cer")
 client.tls_insecure_set(False)
 
