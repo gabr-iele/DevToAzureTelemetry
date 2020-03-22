@@ -1,5 +1,5 @@
-var key = "Y9cpLwcIjn2sPY7lGHIKytuzqouEXF9BnQ5f8+2s8NtKSBIgYqqpKqIwq6EG3Ft/16pbuRTMuJbycgd/gwfB9g==";
-            
+var storageSharedAccessKey = --STORAGE_SHARED_ACCESS_KEY--;
+
 var groupBy = function(array, property) {
     return array.reduce((acc, obj) => {
         const key = obj[property];
@@ -15,7 +15,7 @@ var groupBy = function(array, property) {
 function genRequest(uri) {
     var date = (new Date()).toUTCString();
     var strToSign = date + "\n/hw1storage/deviceData()";
-    var secret = CryptoJS.enc.Base64.parse(key);
+    var secret = CryptoJS.enc.Base64.parse(storageSharedAccessKey);
     var hash = CryptoJS.HmacSHA256(strToSign, secret);
     var hashInBase64 = CryptoJS.enc.Base64.stringify(hash);
     var auth = "SharedKeyLite hw1storage:" + hashInBase64;
