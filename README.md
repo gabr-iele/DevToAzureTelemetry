@@ -8,4 +8,4 @@ How to test:
 3) Open the <code>index.html</code> file in the <code>/web</code> folder to execute query operations
 
 Hands-on guide: https://www.hackster.io/gabriele-ursini/send-virtual-telemetry-to-azure-iot-cloud-based-backend-f29b95
----Link video---
+Demonstration video: https://youtu.be/VLKDo83KOdA
