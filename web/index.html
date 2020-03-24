@@ -16,16 +16,20 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/enc-base64.min.js"></script>
         <script src="script.js"></script>
     </head>
-    <body>
+        <body>
         <div name="div1">
-            Insert ID of env. station
-            <input type="text" id="env_station" size=2>
+            Choose env. station to retrieve its latest rilevations
+            <select id="env_station">
+                <option value="None"></option>
+                <option value="S1">S1</option>
+                <option value="S2">S2</option>
+            </select>
             <button onclick="f1();">Show</button>
             <table id="tab1">
             </table>
         </div>
         <div name="div2">
-            Insert parameter
+            Choose sensor to retrieve its rilevations in the last hour
             <select id="sensor">
                 <option value="None"></option>
                 <option value="temperature">Temperature</option>
