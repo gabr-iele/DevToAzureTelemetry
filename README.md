@@ -1,5 +1,9 @@
 # DevToAzureTelemetry
+First assignment for the Internet of Things course of the MSc in Engineering in Computer Science at Sapienza Università di Roma
+
 Send virtual telemetry data from device to Azure IoT cloud-based backend
+
+[![Jf2dy7.png](https://iili.io/Jf2dy7.png)](https://freeimage.host/i/schema.Jf2dy7)
 
 How to test:
 
