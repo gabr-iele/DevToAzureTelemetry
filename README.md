@@ -1,5 +1,5 @@
 # DevToAzureTelemetry
-First assignment for the Internet of Things course of the MSc in Engineering in Computer Science at Sapienza Università di Roma
+Collection of assignments for the Internet of Things course of the MSc in Engineering in Computer Science at Sapienza Università di Roma
 
 Send virtual telemetry data from device to Azure IoT cloud-based backend
 
