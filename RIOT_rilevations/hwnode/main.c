@@ -11,7 +11,7 @@
 #include "saul_reg.h"
 
 #define EMCUTE_PORT         (1883U)
-#define EMCUTE_ID           ("gertrud")
+#define EMCUTE_ID           ("stat1")
 #define EMCUTE_PRIO         (THREAD_PRIORITY_MAIN - 1)
 
 #define NUMOFSUBS           (16U)
