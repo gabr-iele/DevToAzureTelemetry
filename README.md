@@ -5,6 +5,13 @@ Send virtual telemetry data from device to Azure IoT cloud-based backend
 
 [![Jf2dy7.png](https://iili.io/Jf2dy7.png)](https://freeimage.host/i/schema.Jf2dy7)
 
+**HW2: Rilevations from RIOT-OS simulated device and from real device (iot-lab)**
+
+Hands-on guide: ***
+Demonstration video: ***
+
+**HW1: Random rilevations from virtual device (python)**
+
 How to test:
 
 1) Fill the variable <code>storageSharedAccessKey</code> in the <code>/web/script.js</code> file and the variable <code>hubSharedAccessKey</code> in the <code>/main/sensors.py</code> file with appropriate values
