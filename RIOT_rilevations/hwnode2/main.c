@@ -8,8 +8,11 @@
 #include "net/ipv6/addr.h"
 #include "xtimer.h"
 #include "saul_reg.h"
+
+/* UNCOMMENT THIS FOR IoT-LAB DEPLOYMENT
 #include "lpsxxx.h"
 #include "lpsxxx_params.h"
+UNCOMMENT THIS FOR IoT-LAB DEPLOYMENT */
 
 #define EMCUTE_ID           ("stat2")
 #define EMCUTE_PORT         (1882U)
@@ -277,7 +280,9 @@ void doall(char* param, char* env_s, float value) {
 
 /* routine with real sensors */
 void start_with_physical(char* station) {
+	printf("Station %s\n", station);
 	
+	/* UNCOMMENT THIS FOR IoT-LAB DEPLOYMENT
 	lpsxxx_t dev;
 	if(lpsxxx_init(&dev, &lpsxxx_params[0]) != LPSXXX_OK) {
 		puts("Initialization failed");
@@ -287,10 +292,9 @@ void start_with_physical(char* station) {
 	uint16_t pres;
 	int16_t temp;
 	
-	printf("Station %s\n", station);
 	while(1) {
 		lpsxxx_enable(&dev);
-		xtimer_sleep(1); /* wait a bit for the measurements to complete */
+		xtimer_sleep(1); // wait a bit for the measurements to complete
 		
 		lpsxxx_read_temp(&dev, &temp);
 		lpsxxx_read_pres(&dev, &pres);
@@ -304,6 +308,7 @@ void start_with_physical(char* station) {
 		//doall("pressure", station, pres);
 		xtimer_sleep(2);
 	}
+	UNCOMMENT THIS FOR IoT-LAB DEPLOYMENT */
 	return;
 }
 
