@@ -20,4 +20,6 @@ How to test:
 
 Hands-on guide: https://www.hackster.io/gabriele-ursini/send-virtual-telemetry-to-azure-iot-cloud-based-backend-f29b95  Demonstration video: https://youtu.be/VLKDo83KOdA
 
+Linkedin profile: https://www.linkedin.com/in/gabriele-ursini-08578a1a3/
+
 IMPORTANT: in order to work, the application needs two secret keys to access the Hub and the Storage. In this repository they're omitted for security reasons. 
