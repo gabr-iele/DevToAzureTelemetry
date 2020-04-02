@@ -7,8 +7,10 @@ BOARD ?= native
 # This has to be the absolute path to the RIOT base directory:
 RIOTBASE ?= $(CURDIR)/../../../RIOT
 
+
 # Default driver
 DRIVER ?= lps331ap
+
 
 BOARD_INSUFFICIENT_MEMORY := arduino-duemilanove arduino-mega2560 arduino-nano \
                              arduino-uno chronos hifive1 msb-430 msb-430h \
@@ -18,8 +20,10 @@ BOARD_INSUFFICIENT_MEMORY := arduino-duemilanove arduino-mega2560 arduino-nano \
                              stm32f0discovery telosb waspmote-pro wsn430-v1_3b \
                              wsn430-v1_4 z1 mega-xplained
 
+ifeq ($(BOARD),"iotlab-m3")
 # Include module for LPSXXX family sensors driver
 USEMODULE += $(DRIVER)
+endif
 # Include saul module
 USEMODULE += saul_default
 # Include packages that pull up and auto-init the link layer.
