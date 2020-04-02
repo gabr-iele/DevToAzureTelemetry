@@ -7,8 +7,8 @@ Send virtual telemetry data from device to Azure IoT cloud-based backend
 
 **HW2: Rilevations from RIOT-OS simulated device and from real device (iot-lab)**
 
-Hands-on guide: ***
-Demonstration video: ***
+Hands-on guide: https://www.linkedin.com/feed/update/urn:li:activity:6651154560838615040/
+Demonstration video: https://youtu.be/e_nsh2R2caI
 
 **HW1: Random rilevations from virtual device (python)**
 
