@@ -5,7 +5,10 @@ APPLICATION = emcute_mqttsn
 BOARD ?= native
 
 # This has to be the absolute path to the RIOT base directory:
-RIOTBASE ?= $(CURDIR)/../RIOT
+RIOTBASE ?= $(CURDIR)/../../../RIOT
+
+# Default driver
+DRIVER ?= lps331ap
 
 BOARD_INSUFFICIENT_MEMORY := arduino-duemilanove arduino-mega2560 arduino-nano \
                              arduino-uno chronos hifive1 msb-430 msb-430h \
@@ -15,7 +18,9 @@ BOARD_INSUFFICIENT_MEMORY := arduino-duemilanove arduino-mega2560 arduino-nano \
                              stm32f0discovery telosb waspmote-pro wsn430-v1_3b \
                              wsn430-v1_4 z1 mega-xplained
 
-#Include saul module
+# Include module for LPSXXX family sensors driver
+USEMODULE += $(DRIVER)
+# Include saul module
 USEMODULE += saul_default
 # Include packages that pull up and auto-init the link layer.
 # NOTE: 6LoWPAN will be included if IEEE802.15.4 devices are present
@@ -32,6 +37,7 @@ USEMODULE += shell_commands
 USEMODULE += ps
 # For testing we also include the ping6 command and some stats
 USEMODULE += gnrc_icmpv6_echo
+
 
 # Comment this out to disable code in RIOT that does safety checking
 # which is not needed in a production environment but helps in the
