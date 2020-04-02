@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <unistd.h>
 
 #include "shell.h"
 #include "msg.h"
@@ -9,7 +8,8 @@
 #include "net/ipv6/addr.h"
 #include "xtimer.h"
 #include "saul_reg.h"
-
+#include "lpsxxx.h"
+#include "lpsxxx_params.h"
 
 #define EMCUTE_ID           ("stat2")
 #define EMCUTE_PORT         (1882U)
@@ -274,38 +274,37 @@ void doall(char* param, char* env_s, float value) {
 	free(v);
 }
 
-float retrieve(char* cmd) {
-	int stdout_bk;
-	stdout_bk = dup(fileno(stdout));
-	
-	int pipefd[2];
-	pipe(pipefd);
-	
-	dup2(pipefd[1], fileno(stdout));
-	
-	system(cmd);
-	fflush(stdout);
-	close(pipefd[1]);
-	
-	dup2(stdout_bk, fileno(stdout));
-	
-	char buf[20];
-	read(pipefd[0], buf, 20);
-	return (float)atof(buf);
-}
 
 /* routine with real sensors */
 void start_with_physical(char* station) {
+	
+	lpsxxx_t dev;
+	if(lpsxxx_init(&dev, &lpsxxx_params[0]) != LPSXXX_OK) {
+		puts("Initialization failed");
+		return;
+	}
+	
+	uint16_t pres;
+	int16_t temp;
+	
+	printf("Station %s\n", station);
 	while(1) {
+		lpsxxx_enable(&dev);
+		xtimer_sleep(1); /* wait a bit for the measurements to complete */
 		
-		float temp = retrieve("t");
-		doall("temperature", station, temp);
-		float lum = retrieve("l");
-		doall("luminosity", station, lum);
-		float pres = retrieve("p");
-		doall("pressure", station, pres);
+		lpsxxx_read_temp(&dev, &temp);
+		lpsxxx_read_pres(&dev, &pres);
+		lpsxxx_disable(&dev);
+		
+		int temp_abs = temp / 100;
+		temp -= temp_abs * 100;
+		
+		printf("Pressure value: %ihPa - Temperature: %2i.%02i°C\n", pres, temp_abs, temp);
+		//doall("temperature", station, temp);
+		//doall("pressure", station, pres);
 		xtimer_sleep(2);
 	}
+	return;
 }
 
 /* start collection of data */
@@ -320,6 +319,7 @@ static int start(int argc, char** argv)
 	/* check if real sensors */
 	saul_reg_t* dev = saul_reg;
 	if(dev != NULL) {
+		printf("Devices detected\n");
 		start_with_physical(argv[1]);
 		return 0;
 	}
