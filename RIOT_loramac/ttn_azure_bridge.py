@@ -6,19 +6,19 @@ import base64
 import json
 
 # event hub compatible name
-iotHubName = "###.azure-devices.net"
+iotHubName = "[HUB_NAME].azure-devices.net"
 # id of broker
-device_id = "###"
+device_id = "[DEVICE_ID]"
 # topic cloud->broker
 hubTopicSubscribe = "devices/"+device_id+"/messages/devicebound/#"
 # topic broker->cloud
 hubTopicPublish = "devices/"+device_id+"/messages/events/"
 # secret key for auth. broker to hub
-hubSharedAccessKey = "###"
+hubSharedAccessKey = "[HUB_KEY]"
 # name of the application on TTN
-ttn_app_name = "###"
+ttn_app_name = "[TTN_APP_NAME]"
 # TTN application key
-ttn_app_key = "###"
+ttn_app_key = "[TTN_APP_KEY]"
 
 def gen_sas_token(uri, key, expiry=3600):
     ttl = int(time.time())+expiry
