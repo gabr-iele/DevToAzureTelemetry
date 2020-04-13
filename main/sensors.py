@@ -86,7 +86,7 @@ client.on_disconnect = on_disconnect
 client.on_message = on_message
 #client.on_publish = on_publish
 client.username_pw_set(iotHubName+"/"+device_id, gen_sas_token(iotHubName+"/devices/"+device_id, hubSharedAccessKey))
-client.tls_set("baltimorebase64.cer")
+client.tls_set("./../baltimorebase64.cer")
 client.tls_insecure_set(False)
 
 client.connect(iotHubName, port=8883)
