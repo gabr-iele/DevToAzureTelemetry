@@ -7,4 +7,4 @@
 **Useful links**:
 - [Assignment](http://ichatz.me/Site/InternetOfThings2020-Assignment3)
 - [Hands-on guide](https://www.linkedin.com/pulse/lorawan-protocol-publishment-from-things-cloud-based-backend-ursini/)
-- [Demonstration video]()
+- [Demonstration video](https://youtu.be/bO1vo2ovNTU)
