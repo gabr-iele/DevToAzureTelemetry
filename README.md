@@ -12,7 +12,7 @@ Send virtual telemetry data from device to Azure IoT cloud-based backend
 **Useful links**:
 - [Assignment](http://ichatz.me/Site/InternetOfThings2020-Assignment3)
 - [Hands-on guide](https://www.linkedin.com/pulse/lorawan-protocol-publishment-from-things-cloud-based-backend-ursini/)
-- [Demonstration video]()
+- [Demonstration video](https://youtu.be/bO1vo2ovNTU)
 
 **HW2: Rilevations from RIOT-OS simulated device and from real device (iot-lab)**
 
