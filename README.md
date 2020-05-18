@@ -7,7 +7,7 @@ Send virtual telemetry data from device to Azure IoT cloud-based backend
 
 **HW4: Crowd-sensing application based on mobile accelerometer sensor to perform user activity recognition, in both cloud and edge deployment**
 
-**Goal**: Operate distinction of user activity in still and moving using the mobile sensor for acceleration, exposed by the Generic Sensor API, both in a cloud deployment scenario (the model for recognition is situated in the cloud backend) and in an edge deployment scenario (execute the model directly in the client application). In both cases persistence of measurements and computed activity is implemented by the cloud backend and displayed through a dashboard.
+**Goal**: Operate distinction of user activity in still and moving using the mobile sensor for acceleration, exposed by the [Generic Sensor API](https://www.w3.org/TR/generic-sensor/), both in a cloud deployment scenario (the model for recognition is situated in the cloud backend) and in an edge deployment scenario (execute the model directly in the client application). In both cases persistence of measurements and computed activity is implemented by the cloud backend and displayed through a dashboard.
 
 **Useful links**:
 - [Assignment](http://ichatz.me/Site/InternetOfThings2020-Assignment4)
