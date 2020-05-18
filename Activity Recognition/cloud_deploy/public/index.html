@@ -1,0 +1,38 @@
+<html>
+    <head>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="status.js" type="text/javascript"></script>
+    </head>
+    <body>
+
+		<h1>Linear Accelerometer raw data</h1>
+		<div id="status">No data</div>
+		<div id="activity">Still</div>
+
+
+		<script type="text/javascript">
+		var socket = io();
+			let status = document.getElementById('status');
+			if ( 'LinearAccelerationSensor' in window ) {
+    			let lacl = new LinearAccelerationSensor({frequency: 0.1});
+    			lacl.addEventListener('activate', () => console.log('Ready to measure.'));
+    			lacl.addEventListener('error', error => console.log(`Error: ${error.name}`));
+    			lacl.addEventListener('reading', () => {
+        			status.innerHTML = "x: " + lacl.x + "<br>y: " + lacl.y + "<br>z: " + lacl.z;
+					var ts = Date.now();
+					var msg = {
+           				"x": String(lacl.x).substring(0,6),
+            			"y": String(lacl.y).substring(0,6),
+						"z": String(lacl.z).substring(0,6),
+						"ts": ts
+        			};
+        			socket.emit('data', msg);
+					//retrieveStatus(ts);
+    			});
+    			lacl.start();
+			}
+			else status.innerHTML = 'Linear Accelerometer not supported';
+		</script>
+
+	</body>
+</html>

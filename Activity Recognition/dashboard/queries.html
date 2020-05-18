@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <script src="script.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac-sha256.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/enc-base64.min.js"></script>
+    </head>
+    <body>
+        <div id="cloud_queries">
+            Latest values received and corresponding activity:
+            <table id="cloud_table1"></table><br>
+            Values received during this hour and corresponding activities:
+            <table id="cloud_table2"></table><br>
+            <button onclick="cloud_query();">Refresh</button>
+        </div>
+        <br>
+        <div id="query2">
+            Latest activity done by the user:
+            <table id="edge_table1"></table><br>
+            User activity from this hour:
+            <table id="edge_table2"></table><br>
+            <button onclick="edge_query();">Refresh</button>
+        </div>
+    </body>
+</html>

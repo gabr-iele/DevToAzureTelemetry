@@ -1,0 +1,42 @@
+<html>
+    <head>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac-sha256.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/enc-base64.min.js"></script>
+		<script src="main_edge.js" defer></script>
+    </head>
+    <body>
+        <h1>Linear Accelerometer raw data</h1>
+		<div id="status">No data</div>
+        <div id="activity">Still</div>
+		<button id="start">Start</button>
+        <button id="stop">Stop</button>
+
+		<script>
+			let status = document.getElementById('status');
+			if ( 'LinearAccelerationSensor' in window ) {
+				let lacl = new LinearAccelerationSensor({frequency: 1});
+				lacl.addEventListener('activate', () => console.log('Ready to measure.'));
+				lacl.addEventListener('error', error => console.log(`Error: ${error.name}`));
+				lacl.addEventListener('reading', () => {
+					status.innerHTML = "x: " + lacl.x + "<br>y: " + lacl.y + "<br>z: " + lacl.z;
+					var x = lacl.x;
+					var y = lacl.y;
+					var z = lacl.z;
+                    var res = Math.sqrt(x*x + y*y + z*z);
+                    var activity = res > 1.2 ? "Moving" : "Still";
+                    document.getElementById("activity").innerHTML = activity;
+                    sendToHub(activity);
+				});
+				document.getElementById("start").onclick = function() {
+					lacl.start()
+				};
+				document.getElementById("stop").onclick = function() {
+					lacl.stop();
+				};
+			}
+			else status.innerHTML = 'Linear Accelerometer not supported';
+		</script>
+    </body>
+</html>
