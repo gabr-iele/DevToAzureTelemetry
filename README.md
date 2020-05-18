@@ -5,6 +5,15 @@ Send virtual telemetry data from device to Azure IoT cloud-based backend
 
 [![Jf2dy7.png](https://iili.io/Jf2dy7.png)](https://freeimage.host/i/schema.Jf2dy7)
 
+**HW4: Crowd-sensing application based on mobile accelerometer sensor to perform user activity recognition, in both cloud and edge deployment**
+
+**Goal**: Operate distinction of user activity in still and moving using the mobile sensor for acceleration, exposed by the Generic Sensor API, both in a cloud deployment scenario (the model for recognition is situated in the cloud backend) and in an edge deployment scenario (execute the model directly in the client application). In both cases persistence of measurements and computed activity is implemented by the cloud backend and displayed through a dashboard.
+
+**Useful links**:
+- [Assignment](http://ichatz.me/Site/InternetOfThings2020-Assignment4)
+- [Hands-on guide]()
+- [Demonstration video]()
+
 **HW3: Connection of RIOT-OS node and cloud-based backend broker through LoRaWAN protocol (The Things Network)**
 
 **Goal**: Insertion of LoRaWAN protocol in the communication between the nodes and the gateway through TTN and deployment on real hardware provided by IoT-Lab Testbed Facility ([B-L072Z-LRWAN1 LoRa kit](https://www.st.com/en/evaluation-tools/b-l072z-lrwan1.html)).
