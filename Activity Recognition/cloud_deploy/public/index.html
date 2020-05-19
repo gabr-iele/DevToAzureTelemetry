@@ -14,7 +14,7 @@
 			var socket = io();
 			let status = document.getElementById('status');
 			if ( 'LinearAccelerationSensor' in window ) {
-				let lacl = new LinearAccelerationSensor({frequency: 0.1});
+				let lacl = new LinearAccelerationSensor({frequency: 0.2});
 				lacl.addEventListener('activate', () => console.log('Ready to measure.'));
 				lacl.addEventListener('error', error => console.log(`Error: ${error.name}`));
 				lacl.addEventListener('reading', () => {
