@@ -6,7 +6,7 @@ var Protocol = require('azure-iot-device-mqtt').Mqtt;
 var sdk = require('azure-iot-device');
 
 const port = '8080';
-const connString = "HostName=homework-hub.azure-devices.net;DeviceId=pydevhw;SharedAccessKey=yRlZ48tiRxpSE1fOgX6i72D+kmf2PwGqa3SYy90zXTE=";
+const connString = "YOUR_DEVICE_CONNECTION_STRING";
 
 var options = {
     key: fs.readFileSync('certs/key.pem'),
