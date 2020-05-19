@@ -2,14 +2,16 @@ const storageName = "YOUR_STORAGE_ACCOUNT_NAME";
 const tableName = "edgeDeployTable";
 const storageKey = "YOUR_STORAGE_KEY";
 
+// build http request
 function genRequest(uri) {
+    // signature
     var date = (new Date()).toUTCString();
     var strToSign = date + "\n/"+storageName+"/"+tableName;
     var secret = CryptoJS.enc.Base64.parse(storageKey);
     var hash = CryptoJS.HmacSHA256(strToSign, secret);
     var hashInBase64 = CryptoJS.enc.Base64.stringify(hash);
     var auth = "SharedKeyLite "+storageName+":" + hashInBase64;
-
+    
     var xhr = new XMLHttpRequest();
     xhr.open("POST", uri, true);
     xhr.setRequestHeader("Content-Type", "application/json");
@@ -22,6 +24,7 @@ function genRequest(uri) {
 
 function sendToHub(activity) {
     var date = Date.now();
+    // build new entry
     var msg = {
         "activity": activity,
         "PartitionKey": Math.floor(date / (24 * 60 * 60 * 1000)) + '',
