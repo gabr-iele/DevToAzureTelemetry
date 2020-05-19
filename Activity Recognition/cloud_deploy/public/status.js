@@ -1,5 +1,5 @@
-var storageKey = "d3wS3RSUPztT79E5vkhYmvww/yZTBwqyQ+faEpuVRSs61bFC0v7L5TFbmrLhvuIlOc+BbM3/k0TxqrTH7i2pFw==";
-var storageName = "iothwstorage";
+var storageKey = "YOUR_STORAGE_KEY";
+var storageName = "YOUR_STORAGE_ACCOUNT_NAME";
 var tableName = "cloudDeployTable";
 
 function genRequest(uri) {
