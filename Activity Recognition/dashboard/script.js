@@ -1,5 +1,5 @@
-const storageName = "iothwstorage";
-const storageKey = "d3wS3RSUPztT79E5vkhYmvww/yZTBwqyQ+faEpuVRSs61bFC0v7L5TFbmrLhvuIlOc+BbM3/k0TxqrTH7i2pFw==";
+const storageName = "YOUR_STORAGE_ACCOUNT_NAME";
+const storageKey = "YOUR_STORAGE_KEY";
 const tab1 = "cloudDeployTable()";
 const tab2 = "edgeDeployTable()";
 
