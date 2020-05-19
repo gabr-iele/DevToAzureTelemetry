@@ -2,7 +2,9 @@ var storageKey = "YOUR_STORAGE_KEY";
 var storageName = "YOUR_STORAGE_ACCOUNT_NAME";
 var tableName = "cloudDeployTable";
 
+// build http request
 function genRequest(uri) {
+    // signature
     var date = (new Date()).toUTCString();
     var strToSign = date + "\n/"+storageName+"/"+tableName+"()";
     var secret = CryptoJS.enc.Base64.parse(storageKey);
@@ -20,7 +22,7 @@ function genRequest(uri) {
     return xhr;
 }
 
-
+// query storage using partition key and rowkey
 function retrieveStatus(ts) {
     var pkey = Math.floor(ts / (24 * 60 * 60 * 1000)) + '';
     var rkey = ts + '';
