@@ -9,9 +9,11 @@ module.exports = function (context, iotHubMessage) {
     var x = JSON.parse(m).x;
     var y = JSON.parse(m).y;
     var z = JSON.parse(m).z;
-    var date = JSON.parse(m).ts;
+    var date = JSON.parse(m).ts;  // used to compute partition key and row key
+    // recognition model
     var res = Math.sqrt(x*x + y*y + z*z);
     var activity = res > 1.2 ? "Moving" : "Still";
+    // save new entry to Table storage
     context.bindings.outputTable = {
         "partitionKey": Math.floor(date / (24 * 60 * 60 * 1000)) + '',
         "rowKey": date + '',
