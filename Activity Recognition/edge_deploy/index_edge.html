@@ -1,17 +1,16 @@
 <html>
-    <head>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac-sha256.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/enc-base64.min.js"></script>
 		<script src="main_edge.js" defer></script>
-    </head>
-    <body>
-        <h1>Linear Accelerometer raw data</h1>
+	</head>
+	<body>
+		<h1>Linear Accelerometer raw data</h1>
 		<div id="status">No data</div>
-        <div id="activity">Still</div>
+		<div id="activity">Still</div>
 		<button id="start">Start</button>
-        <button id="stop">Stop</button>
+		<button id="stop">Stop</button>
 
 		<script>
 			let status = document.getElementById('status');
@@ -24,10 +23,12 @@
 					var x = lacl.x;
 					var y = lacl.y;
 					var z = lacl.z;
-                    var res = Math.sqrt(x*x + y*y + z*z);
-                    var activity = res > 1.2 ? "Moving" : "Still";
-                    document.getElementById("activity").innerHTML = activity;
-                    sendToHub(activity);
+					// recognition model
+					var res = Math.sqrt(x*x + y*y + z*z);
+					var activity = res > 1.2 ? "Moving" : "Still";
+					document.getElementById("activity").innerHTML = activity;
+					// save status to the storage
+					sendToHub(activity);
 				});
 				document.getElementById("start").onclick = function() {
 					lacl.start()
