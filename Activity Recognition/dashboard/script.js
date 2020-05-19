@@ -3,7 +3,9 @@ const storageKey = "YOUR_STORAGE_KEY";
 const tab1 = "cloudDeployTable()";
 const tab2 = "edgeDeployTable()";
 
+// build http request
 function genRequest(uri, table) {
+    //signature
     var date = (new Date()).toUTCString();
     var strToSign = date + "\n/"+storageName+"/"+table;
     var secret = CryptoJS.enc.Base64.parse(storageKey);
@@ -22,6 +24,7 @@ function genRequest(uri, table) {
 
 }
 
+// cloud deployment queries
 function cloud_query() {
     var uri = "https://"+storageName+".table.core.windows.net/"+tab1;
     var xhr = genRequest(uri, tab1);
@@ -29,9 +32,11 @@ function cloud_query() {
     xhr.send();
 }
 
+// display result
 function cloud_query_display(e) {
     if(e.target.status == 200 && e.target.readyState == XMLHttpRequest.DONE) {
 
+        // latest entry
         var table = document.getElementById("cloud_table1");
         table.innerHTML = "";
         table.innerHTML += "<tr><th>X</th><th>Y</th><th>Z</th><th>Activity</th><th>Timestamp</th></tr>";
@@ -39,6 +44,7 @@ function cloud_query_display(e) {
         var latest = entries.reduce((prev,cur) => (prev.RowKey > cur.RowKey) ? prev : cur);
         table.innerHTML += "<tr><td>"+latest.x+"</td><td>"+latest.y+"</td><td>"+latest.z+"</td><td>"+latest.activity+"</td><td>"+latest.Timestamp+"</td></tr>";
 
+        // latter hour entries
         table = document.getElementById("cloud_table2");
         table.innerHTML = "";
         table.innerHTML += "<tr><th>X</th><th>Y</th><th>Z</th><th>Activity</th><th>Timestamp</th></tr>";
@@ -50,7 +56,7 @@ function cloud_query_display(e) {
     }
 }
 
-
+// edge deployment queries
 function edge_query() {
     var uri = "https://"+storageName+".table.core.windows.net/"+tab2;
     var xhr = genRequest(uri, tab2);
@@ -58,9 +64,11 @@ function edge_query() {
     xhr.send();
 }
 
+// display result
 function edge_query_display(e) {
     if(e.target.status == 200 && e.target.readyState == XMLHttpRequest.DONE) {
         
+        // latest entry
         var table = document.getElementById("edge_table1");
         table.innerHTML = "";
         table.innerHTML += "<tr><th>Activity</th><th>Timestamp</th></tr>";
@@ -68,6 +76,7 @@ function edge_query_display(e) {
         var latest = entries.reduce((prev,cur) => (prev.RowKey > cur.RowKey) ? prev : cur);
         table.innerHTML += "<tr><td>"+latest.activity+"</td><td>"+latest.Timestamp+"</td></tr>";
 
+        // latter hour entries
         table = document.getElementById("edge_table2");
         table.innerHTML = "";
         table.innerHTML += "<tr><th>Activity</th><th>Timestamp</th></tr>";
