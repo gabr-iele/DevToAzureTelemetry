@@ -11,8 +11,8 @@ Send virtual telemetry data from device to Azure IoT cloud-based backend
 
 **Useful links**:
 - [Assignment](http://ichatz.me/Site/InternetOfThings2020-Assignment4)
-- [Hands-on guide]()
-- [Demonstration video]()
+- [Hands-on guide](https://www.linkedin.com/pulse/crowd-sensing-application-collection-mobile-data-user-gabriele-ursini/?trackingId=RjhsH6xaQBKRIIMjOftzUw%3D%3D)
+- [Demonstration video](https://youtu.be/Pu7A5wCpJNg)
 
 **HW3: Connection of RIOT-OS node and cloud-based backend broker through LoRaWAN protocol (The Things Network)**
 
