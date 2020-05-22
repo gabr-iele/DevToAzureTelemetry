@@ -10,7 +10,7 @@ function genRequest(uri) {
     var secret = CryptoJS.enc.Base64.parse(storageKey);
     var hash = CryptoJS.HmacSHA256(strToSign, secret);
     var hashInBase64 = CryptoJS.enc.Base64.stringify(hash);
-    var auth = "SharedKeyLite hw1storage:" + hashInBase64;
+    var auth = "SharedKeyLite "+storageName+":" + hashInBase64;
 
     var xhr = new XMLHttpRequest();
     xhr.open("GET", uri, true);
